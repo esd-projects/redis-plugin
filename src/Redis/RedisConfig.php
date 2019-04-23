@@ -125,6 +125,9 @@ class RedisConfig
      */
     public function buildConfig()
     {
+        if (!extension_loaded('redis')) {
+            throw new RedisException("缺少redis扩展");
+        }
         if ($this->poolMaxNumber < 1) {
             throw new RedisException("poolMaxNumber必须大于1");
         }
