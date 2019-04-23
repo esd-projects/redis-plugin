@@ -9,8 +9,6 @@
 namespace GoSwoole\BaseServer\Plugins\Redis;
 
 
-use GoSwoole\BaseServer\Server\Exception\ConfigException;
-
 class RedisConfig
 {
     /**
@@ -123,12 +121,12 @@ class RedisConfig
 
     /**
      * 构建配置
-     * @throws ConfigException
+     * @throws RedisException
      */
     public function buildConfig()
     {
         if ($this->poolMaxNumber < 1) {
-            throw new ConfigException("poolMaxNumber必须大于1");
+            throw new RedisException("poolMaxNumber必须大于1");
         }
     }
 
