@@ -6,8 +6,8 @@
  * Time: 14:36
  */
 
-use GoSwoole\BaseServer\Plugins\Redis\RedisConfig;
-use GoSwoole\BaseServer\Plugins\Redis\RedisPool;
+use GoSwoole\Plugins\Redis\RedisConfig;
+use GoSwoole\Plugins\Redis\RedisPool;
 
 require __DIR__ . '/../vendor/autoload.php';
 

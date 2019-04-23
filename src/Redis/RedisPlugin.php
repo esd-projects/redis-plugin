@@ -6,7 +6,7 @@
  * Time: 10:30
  */
 
-namespace GoSwoole\BaseServer\Plugins\Redis;
+namespace GoSwoole\Plugins\Redis;
 
 
 use GoSwoole\BaseServer\Server\Context;

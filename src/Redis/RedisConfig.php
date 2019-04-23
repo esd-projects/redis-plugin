@@ -6,7 +6,7 @@
  * Time: 10:49
  */
 
-namespace GoSwoole\BaseServer\Plugins\Redis;
+namespace GoSwoole\Plugins\Redis;
 
 
 class RedisConfig

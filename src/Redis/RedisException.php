@@ -6,7 +6,7 @@
  * Time: 11:45
  */
 
-namespace GoSwoole\BaseServer\Plugins\Redis;
+namespace GoSwoole\Plugins\Redis;
 
 
 use GoSwoole\BaseServer\Exception;

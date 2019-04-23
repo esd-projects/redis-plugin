@@ -6,7 +6,7 @@
  * Time: 9:55
  */
 
-namespace GoSwoole\BaseServer\Plugins\Redis;
+namespace GoSwoole\Plugins\Redis;
 
 
 use GoSwoole\BaseServer\Coroutine\Channel;
@@ -26,7 +26,7 @@ class RedisPool
     /**
      * RedisPool constructor.
      * @param RedisConfig $redisConfig
-     * @throws \GoSwoole\BaseServer\Server\Exception\ConfigException
+     * @throws RedisException
      */
     public function __construct(RedisConfig $redisConfig)
     {

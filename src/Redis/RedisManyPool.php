@@ -6,10 +6,7 @@
  * Time: 10:59
  */
 
-namespace GoSwoole\BaseServer\Plugins\Redis;
-
-
-use MysqliDb;
+namespace GoSwoole\Plugins\Redis;
 use Redis;
 
 class RedisManyPool

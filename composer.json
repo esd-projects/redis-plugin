@@ -1,10 +1,11 @@
 {
   "require": {
-    "go-swoole/base-server":"dev-master"
+    "go-swoole/base-server":"dev-master",
+    "ext-redis": "*"
   },
   "autoload": {
     "psr-4": {
-      "GoSwoole\\BaseServer\\Plugins\\": "src/"
+      "GoSwoole\\Plugins\\": "src/"
     }
   },
   "authors": [
