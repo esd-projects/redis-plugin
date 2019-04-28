@@ -51,6 +51,7 @@ class RedisPlugin extends AbstractPlugin
             $mysqlManyPool->addPool($mysqlPool);
         }
         $context->add("redisPool", $mysqlManyPool);
+        $this->ready();
     }
 
     /**
