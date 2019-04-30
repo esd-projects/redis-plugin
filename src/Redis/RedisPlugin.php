@@ -9,11 +9,14 @@
 namespace GoSwoole\Plugins\Redis;
 
 
+use GoSwoole\BaseServer\Plugins\Logger\GetLogger;
 use GoSwoole\BaseServer\Server\Context;
 use GoSwoole\BaseServer\Server\Plugin\AbstractPlugin;
+use GoSwoole\BaseServer\Server\Server;
 
 class RedisPlugin extends AbstractPlugin
 {
+    use GetLogger;
     /**
      * @var RedisConfig[]
      */
@@ -31,9 +34,14 @@ class RedisPlugin extends AbstractPlugin
      * 在服务启动前
      * @param Context $context
      * @return mixed
+     * @throws \GoSwoole\BaseServer\Server\Exception\ConfigException
      */
     public function beforeServerStart(Context $context)
     {
+        //所有配置合併
+        foreach ($this->configList as $config) {
+            $config->merge();
+        }
         return;
     }
 
@@ -45,12 +53,22 @@ class RedisPlugin extends AbstractPlugin
      */
     public function beforeProcessStart(Context $context)
     {
-        $mysqlManyPool = new RedisManyPool();
-        foreach ($this->configList as $config) {
-            $mysqlPool = new RedisPool($config);
-            $mysqlManyPool->addPool($mysqlPool);
+        $redisManyPool = new RedisManyPool();
+        //重新获取配置
+        $this->configList = [];
+        $configs = Server::$instance->getConfigContext()->get(RedisConfig::key, []);
+        if (empty($configs)) {
+            $this->warn("没有refid配置");
         }
-        $context->add("redisPool", $mysqlManyPool);
+        foreach ($configs as $key => $value) {
+            $redisConfig = new RedisConfig("");
+            $redisConfig->setName($key);
+            $this->configList[$key] = $redisConfig->buildFromConfig($value);
+            $redisPool = new RedisPool($redisConfig);
+            $redisManyPool->addPool($redisPool);
+            $this->debug("已添加名为 {$redisConfig->getName()} 的Redis连接池");
+        }
+        $context->add("redisPool", $redisManyPool);
         $this->ready();
     }
 

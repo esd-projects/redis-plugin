@@ -9,8 +9,11 @@
 namespace GoSwoole\Plugins\Redis;
 
 
-class RedisConfig
+use GoSwoole\BaseServer\Plugins\Config\BaseConfig;
+
+class RedisConfig extends BaseConfig
 {
+    const key = "redis";
     /**
      * @var string
      */
@@ -44,9 +47,11 @@ class RedisConfig
      * @param int|null $port
      * @param string $name
      * @param int $poolMaxNumber
+     * @throws \ReflectionException
      */
     public function __construct(string $host, string $password = "", int $selectDb = 0, $port = 6379, string $name = "default", int $poolMaxNumber = 10)
     {
+        parent::__construct(self::key);
         $this->name = $name;
         $this->poolMaxNumber = $poolMaxNumber;
         $this->host = $host;
@@ -130,6 +135,12 @@ class RedisConfig
         }
         if ($this->poolMaxNumber < 1) {
             throw new RedisException("poolMaxNumber必须大于1");
+        }
+        if(empty($this->name)){
+            throw new RedisException("name必须设置");
+        }
+        if(empty($this->host)){
+            throw new RedisException("host必须设置");
         }
     }
 
