@@ -50,6 +50,7 @@ class RedisPlugin extends AbstractPlugin
      * @param Context $context
      * @return mixed
      * @throws \GoSwoole\BaseServer\Exception
+     * @throws \ReflectionException
      */
     public function beforeProcessStart(Context $context)
     {
@@ -58,7 +59,7 @@ class RedisPlugin extends AbstractPlugin
         $this->configList = [];
         $configs = Server::$instance->getConfigContext()->get(RedisConfig::key, []);
         if (empty($configs)) {
-            $this->warn("没有refid配置");
+            $this->warn("没有redis配置");
         }
         foreach ($configs as $key => $value) {
             $redisConfig = new RedisConfig("");
