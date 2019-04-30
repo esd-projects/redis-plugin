@@ -45,7 +45,7 @@ class RedisPool
      */
     public function db(): Redis
     {
-        $db = getContextValueByClassName(Redis::class);
+        $db = getContextValue("Redis:{$this->getRedisConfig()->getName()}");
         if ($db == null) {
             $db = $this->pool->pop();
            if($db instanceof Redis){
@@ -64,7 +64,7 @@ class RedisPool
             defer(function () use ($db) {
                 $this->pool->push($db);
             });
-            setContextValue("redis", $db);
+            setContextValue("Redis:{$this->getRedisConfig()->getName()}", $db);
         }
         return $db;
     }
