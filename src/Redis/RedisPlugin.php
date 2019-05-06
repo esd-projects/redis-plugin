@@ -38,6 +38,7 @@ class RedisPlugin extends AbstractPlugin
      */
     public function beforeServerStart(Context $context)
     {
+        ini_set('default_socket_timeout', '-1');
         //所有配置合併
         foreach ($this->configList as $config) {
             $config->merge();
@@ -55,6 +56,7 @@ class RedisPlugin extends AbstractPlugin
      */
     public function beforeProcessStart(Context $context)
     {
+        ini_set('default_socket_timeout', '-1');
         $redisManyPool = new RedisManyPool();
         //重新获取配置
         $this->configList = [];
