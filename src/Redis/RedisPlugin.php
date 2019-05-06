@@ -51,6 +51,7 @@ class RedisPlugin extends AbstractPlugin
      * @return mixed
      * @throws \GoSwoole\BaseServer\Exception
      * @throws \ReflectionException
+     * @throws RedisException
      */
     public function beforeProcessStart(Context $context)
     {
@@ -70,6 +71,8 @@ class RedisPlugin extends AbstractPlugin
             $this->debug("已添加名为 {$redisConfig->getName()} 的Redis连接池");
         }
         $context->add("redisPool", $redisManyPool);
+        $this->setToDIContainer(RedisManyPool::class,$redisManyPool);
+        $this->setToDIContainer(RedisPool::class,$redisManyPool->getPool());
         $this->ready();
     }
 
