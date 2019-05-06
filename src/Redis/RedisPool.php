@@ -53,6 +53,7 @@ class RedisPool
                    if(!$db->connect($this->redisConfig->getHost(),$this->redisConfig->getPort())){
                        throw new RedisException($db->getLastError());
                    }
+                   $db->setOption(\Redis::OPT_READ_TIMEOUT, -1);
                    if(!empty($this->redisConfig->getPassword())){
                        if(!$db->auth($this->redisConfig->getPassword())){
                            throw new RedisException($db->getLastError());
