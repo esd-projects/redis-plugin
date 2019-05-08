@@ -43,6 +43,7 @@ class RedisPlugin extends AbstractPlugin
         foreach ($this->configList as $config) {
             $config->merge();
         }
+        $this->setToDIContainer(\Redis::class,new RedisProxy());
         return;
     }
 
