@@ -6,10 +6,10 @@
  * Time: 11:45
  */
 
-namespace GoSwoole\Plugins\Redis;
+namespace ESD\Plugins\Redis;
 
 
-use GoSwoole\BaseServer\Exception;
+use ESD\BaseServer\Exception;
 
 class RedisException extends Exception
 {

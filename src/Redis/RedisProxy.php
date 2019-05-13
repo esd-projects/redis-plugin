@@ -6,7 +6,7 @@
  * Time: 10:07
  */
 
-namespace GoSwoole\Plugins\Redis;
+namespace ESD\Plugins\Redis;
 
 
 class RedisProxy

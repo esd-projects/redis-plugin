@@ -6,10 +6,10 @@
  * Time: 10:49
  */
 
-namespace GoSwoole\Plugins\Redis;
+namespace ESD\Plugins\Redis;
 
 
-use GoSwoole\BaseServer\Plugins\Config\BaseConfig;
+use ESD\BaseServer\Plugins\Config\BaseConfig;
 
 class RedisConfig extends BaseConfig
 {

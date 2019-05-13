@@ -6,13 +6,13 @@
  * Time: 10:30
  */
 
-namespace GoSwoole\Plugins\Redis;
+namespace ESD\Plugins\Redis;
 
 
-use GoSwoole\BaseServer\Plugins\Logger\GetLogger;
-use GoSwoole\BaseServer\Server\Context;
-use GoSwoole\BaseServer\Server\Plugin\AbstractPlugin;
-use GoSwoole\BaseServer\Server\Server;
+use ESD\BaseServer\Plugins\Logger\GetLogger;
+use ESD\BaseServer\Server\Context;
+use ESD\BaseServer\Server\Plugin\AbstractPlugin;
+use ESD\BaseServer\Server\Server;
 
 class RedisPlugin extends AbstractPlugin
 {
@@ -34,7 +34,7 @@ class RedisPlugin extends AbstractPlugin
      * 在服务启动前
      * @param Context $context
      * @return mixed
-     * @throws \GoSwoole\BaseServer\Server\Exception\ConfigException
+     * @throws \ESD\BaseServer\Server\Exception\ConfigException
      */
     public function beforeServerStart(Context $context)
     {
@@ -51,7 +51,7 @@ class RedisPlugin extends AbstractPlugin
      * 在进程启动前
      * @param Context $context
      * @return mixed
-     * @throws \GoSwoole\BaseServer\Exception
+     * @throws \ESD\BaseServer\Exception
      * @throws \ReflectionException
      * @throws RedisException
      */

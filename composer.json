@@ -1,11 +1,11 @@
 {
   "require": {
-    "go-swoole/base-server":"~0.1",
+    "esd/base-server":"~0.1",
     "ext-redis": "*"
   },
   "autoload": {
     "psr-4": {
-      "GoSwoole\\Plugins\\": "src/"
+      "ESD\\Plugins\\": "src/"
     }
   },
   "authors": [
@@ -15,7 +15,7 @@
       "homepage": "https://github.com/tmtbe"
     }
   ],
-  "name": "go-swoole/redis-plugin",
+  "name": "esd/redis-plugin",
   "type": "library",
   "keywords": ["server", "swoole"],
   "description": "redis-plugin",

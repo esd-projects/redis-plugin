@@ -6,10 +6,10 @@
  * Time: 9:55
  */
 
-namespace GoSwoole\Plugins\Redis;
+namespace ESD\Plugins\Redis;
 
 
-use GoSwoole\BaseServer\Coroutine\Channel;
+use ESD\BaseServer\Coroutine\Channel;
 use Redis;
 
 class RedisPool
@@ -41,7 +41,7 @@ class RedisPool
 
     /**
      * @return Redis
-     * @throws \GoSwoole\BaseServer\Exception
+     * @throws \ESD\BaseServer\Exception
      */
     public function db(): Redis
     {

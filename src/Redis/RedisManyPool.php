@@ -6,7 +6,7 @@
  * Time: 10:59
  */
 
-namespace GoSwoole\Plugins\Redis;
+namespace ESD\Plugins\Redis;
 use Redis;
 
 class RedisManyPool
@@ -34,7 +34,7 @@ class RedisManyPool
 
     /**
      * @return Redis
-     * @throws \GoSwoole\BaseServer\Exception
+     * @throws \ESD\BaseServer\Exception
      */
     public function db(): Redis
     {

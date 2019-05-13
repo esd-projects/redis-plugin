@@ -6,7 +6,7 @@
  * Time: 17:55
  */
 
-namespace GoSwoole\Plugins\Redis;
+namespace ESD\Plugins\Redis;
 
 
 trait GetRedis
@@ -15,7 +15,7 @@ trait GetRedis
      * @param string $name
      * @return mixed|\Redis
      * @throws RedisException
-     * @throws \GoSwoole\BaseServer\Exception
+     * @throws \ESD\BaseServer\Exception
      */
     public function redis($name = "default")
     {
