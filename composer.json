@@ -1,6 +1,7 @@
 {
   "require": {
-    "esd/base-server":"~0.1",
+    "esd/esd-core":"~0.1",
+    "esd/esd-coroutine":"~0.1",
     "ext-redis": "*"
   },
   "autoload": {

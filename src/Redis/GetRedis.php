@@ -15,7 +15,6 @@ trait GetRedis
      * @param string $name
      * @return mixed|\Redis
      * @throws RedisException
-     * @throws \ESD\BaseServer\Exception
      */
     public function redis($name = "default")
     {

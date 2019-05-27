@@ -9,7 +9,7 @@
 namespace ESD\Plugins\Redis;
 
 
-use ESD\BaseServer\Coroutine\Channel;
+use ESD\Core\Channel\Channel;
 use Redis;
 
 class RedisPool
@@ -32,7 +32,7 @@ class RedisPool
     {
         $this->redisConfig = $redisConfig;
         $redisConfig->buildConfig();
-        $this->pool = new Channel($redisConfig->getPoolMaxNumber());
+        $this->pool = DIGet(Channel::class, [$redisConfig->getPoolMaxNumber()]);
         for ($i = 0; $i < $redisConfig->getPoolMaxNumber(); $i++) {
             $db = new Redis();
             $this->pool->push($db);
@@ -41,14 +41,14 @@ class RedisPool
 
     /**
      * @return Redis
-     * @throws \ESD\BaseServer\Exception
+     * @throws RedisException
      */
     public function db(): Redis
     {
         $db = getContextValue("Redis:{$this->getRedisConfig()->getName()}");
         if ($db == null) {
             $db = $this->pool->pop();
-           if($db instanceof Redis){
+            if($db instanceof Redis){
                if(!$db->isConnected()){
                    if(!$db->connect($this->redisConfig->getHost(),$this->redisConfig->getPort())){
                        throw new RedisException($db->getLastError());
@@ -61,7 +61,7 @@ class RedisPool
                    }
                }
                $db->select($this->redisConfig->getSelectDb());
-           }
+            }
             defer(function () use ($db) {
                 $this->pool->push($db);
             });
