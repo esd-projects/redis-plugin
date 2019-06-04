@@ -34,7 +34,7 @@ class RedisManyPool
 
     /**
      * @return Redis
-     * @throws \ESD\BaseServer\Exception
+     * @throws RedisException
      */
     public function db(): Redis
     {

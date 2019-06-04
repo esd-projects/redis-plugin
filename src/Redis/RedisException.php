@@ -9,7 +9,7 @@
 namespace ESD\Plugins\Redis;
 
 
-use ESD\BaseServer\Exception;
+use ESD\Core\Exception;
 
 class RedisException extends Exception
 {
