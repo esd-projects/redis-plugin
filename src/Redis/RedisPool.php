@@ -10,7 +10,6 @@ namespace ESD\Plugins\Redis;
 
 
 use ESD\BaseServer\Coroutine\Channel;
-use Redis;
 
 class RedisPool
 {
@@ -40,7 +39,7 @@ class RedisPool
     }
 
     /**
-     * @return Redis
+     * @return \Redis
      * @throws \ESD\BaseServer\Exception
      */
     public function db(): Redis
