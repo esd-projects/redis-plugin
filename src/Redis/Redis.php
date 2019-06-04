@@ -9,12 +9,16 @@
 namespace ESD\Plugins\Redis;
 
 
-class Redis
+use ESD\Psr\DB\DBInterface;
+
+class Redis implements DBInterface
 {
     /**
      * @var \Redis
      */
     private $_redis;
+
+    private $_lastQuery;
 
     public function __construct()
     {
@@ -23,7 +27,10 @@ class Redis
 
     public function __call($name, $arguments)
     {
-        return call_user_func_array([$this->_redis, $name], $arguments);
+        $this->_lastQuery = $name;
+        return $this->execute(function () use ($name, $arguments) {
+            return call_user_func_array([$this->_redis, $name], $arguments);
+        });
     }
 
     public function __set($name, $value)
@@ -34,5 +41,22 @@ class Redis
     public function __get($name)
     {
         return $this->_redis->$name;
+    }
+
+    public function getType()
+    {
+        return "redis";
+    }
+
+    public function execute(callable $call = null)
+    {
+        if ($call != null) {
+            return $call();
+        }
+    }
+
+    public function getLastQuery()
+    {
+        return $this->_lastQuery;
     }
 }

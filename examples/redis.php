@@ -25,8 +25,7 @@ DI::$definitions = [
 ];
 
 goWithContext(function () {
-    //$redisConfig = new RedisConfig('redis-master.dev.svc.cluster.local');
-    $redisConfig = new RedisConfig('127.0.0.1');
+    $redisConfig = new RedisConfig('redis-master.dev.svc.cluster.local');
     $redisPool = new RedisPool($redisConfig);
     setContextValue("redisPool", $redisPool);
 
