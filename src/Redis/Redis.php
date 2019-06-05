@@ -27,7 +27,7 @@ class Redis implements DBInterface
 
     public function __call($name, $arguments)
     {
-        $this->_lastQuery = $name;
+        $this->_lastQuery = json_encode($arguments);
         return $this->execute($name, function () use ($name, $arguments) {
             return call_user_func_array([$this->_redis, $name], $arguments);
         });
