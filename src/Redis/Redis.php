@@ -48,7 +48,7 @@ class Redis implements DBInterface
         return "redis";
     }
 
-    public function execute(callable $call = null)
+    public function execute($name,callable $call = null)
     {
         if ($call != null) {
             return $call();
