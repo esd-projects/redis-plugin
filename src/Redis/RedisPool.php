@@ -58,8 +58,8 @@ class RedisPool
                            throw new RedisException($db->getLastError());
                        }
                    }
+                   $db->select($this->redisConfig->getSelectDb());
                }
-               $db->select($this->redisConfig->getSelectDb());
             }
             defer(function () use ($db) {
                 $this->pool->push($db);

@@ -34,8 +34,6 @@ class RedisPlugin extends AbstractPlugin
      * 在服务启动前
      * @param Context $context
      * @return mixed
-     * @throws \DI\DependencyException
-     * @throws \DI\NotFoundException
      * @throws \ESD\Core\Plugins\Config\ConfigException
      */
     public function beforeServerStart(Context $context)
@@ -53,8 +51,6 @@ class RedisPlugin extends AbstractPlugin
      * 在进程启动前
      * @param Context $context
      * @throws RedisException
-     * @throws \DI\DependencyException
-     * @throws \DI\NotFoundException
      * @throws \ReflectionException
      */
     public function beforeProcessStart(Context $context)
