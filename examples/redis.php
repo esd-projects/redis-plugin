@@ -12,7 +12,7 @@ use ESD\Core\Plugins\Event\EventCall;
 use ESD\Coroutine\Channel\ChannelFactory;
 use ESD\Coroutine\Co;
 use ESD\Coroutine\Event\EventCallFactory;
-use ESD\Plugins\Redis\RedisConfig;
+use ESD\Plugins\Redis\RedisOneConfig;
 use ESD\Plugins\Redis\RedisPool;
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -25,7 +25,7 @@ DI::$definitions = [
 ];
 
 goWithContext(function () {
-    $redisConfig = new RedisConfig('redis-master.dev.svc.cluster.local');
+    $redisConfig = new RedisOneConfig('redis-master.dev.svc.cluster.local');
     $redisPool = new RedisPool($redisConfig);
     setContextValue("redisPool", $redisPool);
 

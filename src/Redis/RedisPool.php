@@ -18,16 +18,16 @@ class RedisPool
      */
     protected $pool;
     /**
-     * @var RedisConfig
+     * @var RedisOneConfig
      */
     protected $redisConfig;
 
     /**
      * RedisPool constructor.
-     * @param RedisConfig $redisConfig
+     * @param RedisOneConfig $redisConfig
      * @throws RedisException
      */
-    public function __construct(RedisConfig $redisConfig)
+    public function __construct(RedisOneConfig $redisConfig)
     {
         $this->redisConfig = $redisConfig;
         $redisConfig->buildConfig();
@@ -70,17 +70,17 @@ class RedisPool
     }
 
     /**
-     * @return RedisConfig
+     * @return RedisOneConfig
      */
-    public function getRedisConfig(): RedisConfig
+    public function getRedisConfig(): RedisOneConfig
     {
         return $this->redisConfig;
     }
 
     /**
-     * @param RedisConfig $redisConfig
+     * @param RedisOneConfig $redisConfig
      */
-    public function setRedisConfig(RedisConfig $redisConfig): void
+    public function setRedisConfig(RedisOneConfig $redisConfig): void
     {
         $this->redisConfig = $redisConfig;
     }
