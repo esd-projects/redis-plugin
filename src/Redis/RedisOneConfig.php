@@ -131,16 +131,16 @@ class RedisOneConfig extends BaseConfig
     public function buildConfig()
     {
         if (!extension_loaded('redis')) {
-            throw new RedisException("缺少redis扩展");
+            throw new RedisException("Lack of redis expansion");
         }
         if ($this->poolMaxNumber < 1) {
-            throw new RedisException("poolMaxNumber必须大于1");
+            throw new RedisException("PoolMaxNumber must be greater than 1");
         }
         if(empty($this->name)){
-            throw new RedisException("name必须设置");
+            throw new RedisException("name must be set");
         }
         if(empty($this->host)){
-            throw new RedisException("host必须设置");
+            throw new RedisException("host must be set");
         }
     }
 

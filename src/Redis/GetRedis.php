@@ -23,7 +23,7 @@ trait GetRedis
             /** @var RedisManyPool $redisPool */
             $redisPool = getDeepContextValueByClassName(RedisManyPool::class);
             $pool = $redisPool->getPool($name);
-            if ($pool == null) throw new RedisException("没有找到名为{$name}的redis连接池");
+            if ($pool == null) throw new RedisException("Redis connection pool named {$name} was not found");
             return $pool->db();
         } else {
             return $db;
