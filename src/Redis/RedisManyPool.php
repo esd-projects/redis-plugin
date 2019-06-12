@@ -42,6 +42,6 @@ class RedisManyPool
         if ($default == null) {
             throw new RedisException("没有设置默认的redis");
         }
-        return $this->getPool()->db();
+        return $default->db();
     }
 }

@@ -20,13 +20,11 @@ trait GetRedis
     {
         $db = getContextValue("Redis:$name");
         if ($db == null) {
+            /** @var RedisManyPool $redisPool */
             $redisPool = getDeepContextValueByClassName(RedisManyPool::class);
-            if ($redisPool instanceof RedisManyPool) {
-                $db = $redisPool->getPool($name)->db();
-                return $db;
-            } else {
-                throw new RedisException("没有找到名为{$name}的redis连接池");
-            }
+            $pool = $redisPool->getPool($name);
+            if ($pool == null) throw new RedisException("没有找到名为{$name}的redis连接池");
+            return $pool->db();
         } else {
             return $db;
         }
