@@ -51,7 +51,7 @@ class RedisOneConfig extends BaseConfig
      */
     public function __construct(string $host, string $password = "", int $selectDb = 0, $port = 6379, string $name = "default", int $poolMaxNumber = 10)
     {
-        parent::__construct(self::key);
+        parent::__construct(self::key, true, "name");
         $this->name = $name;
         $this->poolMaxNumber = $poolMaxNumber;
         $this->host = $host;
@@ -136,10 +136,10 @@ class RedisOneConfig extends BaseConfig
         if ($this->poolMaxNumber < 1) {
             throw new RedisException("PoolMaxNumber must be greater than 1");
         }
-        if(empty($this->name)){
+        if (empty($this->name)) {
             throw new RedisException("name must be set");
         }
-        if(empty($this->host)){
+        if (empty($this->host)) {
             throw new RedisException("host must be set");
         }
     }
